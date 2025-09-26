@@ -20,9 +20,10 @@ class User
             puts "#{name} has no tasks."
         else
             puts "#{name}'s tasks:"
-            @tasks.each do |id , task|
-                task_hash = task.to_hash    
-                puts "#{id} -- title: #{task_hash[:title]} -- status: #{task_hash[:status]} -- priority: #{task_hash[:priority]}."
+            @tasks.each do |id, task|
+                hash = task.to_hash
+                overdue_mark = task.overdue? ? "⚠️ OVERDUE!" : ""
+                puts "#{id} -- title: #{hash[:title]} -- status: #{hash[:status]} -- priority: #{hash[:priority]} -- due: #{hash[:due_date]} #{overdue_mark}"
             end
         end
     end
